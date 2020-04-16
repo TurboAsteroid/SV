@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 		// this lets us jump down through one way platforms
 		if( _controller.isGrounded && Input.GetKey( KeyCode.DownArrow ) )
 		{
-			// _velocity.y *= 3f; //из-за этого можно делать паурджамп, вроде работает и без этого
+			_velocity.y *= 3f; //из-за этого можно делать паурджамп, без этого не проваливается сквозь односторонние платформы
 			_controller.ignoreOneWayPlatformsThisFrame = true;
 		}
 	}
