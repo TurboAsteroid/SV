@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 		{
 			_velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 		}
-		if (Input.GetButtonDown ("Jump") && !_controller.isGrounded && !_controller.doubleJump) {
+		if (Input.GetButtonDown("Jump") && !_controller.isGrounded && !_controller.doubleJump) {
             _velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
             _animator.SetTrigger("DoubleJump");
             _controller.doubleJump = true;
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 		// this lets us jump down through one way platforms
 		if( _controller.isGrounded && Input.GetKey( KeyCode.DownArrow ) )
 		{
-			_velocity.y *= 3f;
+			// _velocity.y *= 3f; //из-за этого можно делать паурджамп, вроде работает и без этого
 			_controller.ignoreOneWayPlatformsThisFrame = true;
 		}
 	}
