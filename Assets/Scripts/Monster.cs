@@ -80,29 +80,29 @@ public class Monster : MonoBehaviour
 		_velocity = _controller.velocity;
 	}
 	protected void HorisontalMovement(){
-		if (wayPoints.Count > 0) {
-			if (wayPoints[currentWayPoint]) {
-				Vector2 enemyPosition = transform.position;
-				Vector2 wayPointPosition = wayPoints[currentWayPoint].transform.position;
+		if (wayPoints.Count > 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("idle")) {
+			FlipModel(_velocity.x);
+			
+			Vector2 enemyPosition = transform.position;
+			Vector2 wayPointPosition = wayPoints[currentWayPoint].transform.position;
 
-				bool isIn = true;
- 
-				for( int i = 0 ; i < 2 && isIn ; ++i )
-				{
-					if( enemyPosition[i] < wayPointPosition[i] - 0.5 || enemyPosition[i] > wayPointPosition[i] + 0.5 ) isIn = false ;
-				}
-				
-				if (isIn) {
-					currentWayPoint = (currentWayPoint + 1) % wayPoints.Count;
-				}
+			bool isIn = true;
 
-				_velocity.x = Mathf.Lerp( _velocity.x, Vector3.Normalize(wayPointPosition - enemyPosition).x * runSpeed, Time.deltaTime * 20 );
+			for( int i = 0 ; i < 2 && isIn ; ++i )
+			{
+				if( enemyPosition[i] < wayPointPosition[i] - 0.4 || enemyPosition[i] > wayPointPosition[i] + 0.4 ) isIn = false ;
 			}
+			
+			if (isIn) {
+				_animator.SetTrigger("Idle");
+				currentWayPoint = (currentWayPoint + 1) % wayPoints.Count;
+			}
+
+			_velocity.x = Mathf.Lerp( _velocity.x, Vector3.Normalize(wayPointPosition - enemyPosition).x * runSpeed, Time.deltaTime * 20 );
+			
 		} else {
 			_velocity.x = 0;
 		}
-
-		FlipModel(_velocity.x);
 		_animator.SetFloat ("velocityX", Mathf.Abs (_velocity.x));
 	}
 	protected void VerticalMovement(){
