@@ -16,12 +16,12 @@ public class Monster : MonoBehaviour, IDamagable
 	public int Health {get; set;}
 	protected int _currentWayPoint = 0;
 
-	public float _lookingRange = 4f;
+	public float _lookingRange = 3f;
 	public float _battleRange = 7f;
 	protected bool _combatMode = false;
 	protected GameObject _player;
 	protected Vector2 _lastTargetPosition;
-	protected float _attackRange = 7f;
+	protected float _attackRange = 5f;
 
 	void Start() {
 		_animator = GetComponentInChildren<Animator>();

@@ -9,6 +9,6 @@ public class CharacterAnimationScript : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
     public void ReleaseSparcle() {
-        transform.parent.GetComponent<Monster>().Attack();
+        transform.parent.GetComponent<Mage>().Attack();
     }
 }

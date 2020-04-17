@@ -29,7 +29,6 @@ public class Sparkle : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.tag);
         if (other.tag == "Player") {
             IDamagable hit = other.GetComponent<IDamagable>();
             if (hit != null) {
