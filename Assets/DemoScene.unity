@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2896889}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,8 +662,7 @@ GameObject:
   - component: {fileID: 238882373}
   - component: {fileID: 238882372}
   - component: {fileID: 238882371}
-  - component: {fileID: 238882374}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,11 +696,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc05ca30720e22b42938ff7de597f14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -25
   runSpeed: 2
   wayPoints:
   - {fileID: 1878536001}
   - {fileID: 2118167712}
+  _lookingRange: 4
+  _battleRange: 7
 --- !u!61 &238882372
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -736,7 +736,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238882369}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -749,66 +749,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &238882374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238882369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b005891a5d1c45cc8cea8c713a8bfe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreOneWayPlatformsThisFrame: 0
-  _skinWidth: 0.02
-  platformMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  triggerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  oneWayPlatformMask:
-    serializedVersion: 2
-    m_Bits: 512
-  slopeLimit: 30
-  jumpingThreshold: 0.07
-  slopeSpeedMultiplier:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -90
-      value: 1.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 90
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  totalHorizontalRays: 8
-  totalVerticalRays: 4
 --- !u!1 &382022998
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382022999}
   - component: {fileID: 382023000}
+  - component: {fileID: 382023001}
   m_Layer: 12
   m_Name: SwordHitbox
   m_TagString: Untagged
@@ -850,7 +791,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1549232, y: 0.2904812}
@@ -866,6 +807,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07046008, y: 0.38583964}
   m_EdgeRadius: 0
+--- !u!114 &382023001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382022998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e10550328c561848b026bb4e104aa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &453116680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,7 +2231,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df3ad4bd29070f541a7968ddad55144d, type: 3}
+  m_Sprite: {fileID: 21300100, guid: df3ad4bd29070f541a7968ddad55144d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3400,7 +3353,8 @@ GameObject:
   - component: {fileID: 2090943197}
   - component: {fileID: 2090943198}
   - component: {fileID: 2090943199}
-  m_Layer: 0
+  - component: {fileID: 2090943200}
+  m_Layer: 14
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3488,6 +3442,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2090943200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090943196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dc8fea91412eb478c4a21d236a92ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2118167712
 GameObject:
   m_ObjectHideFlags: 0

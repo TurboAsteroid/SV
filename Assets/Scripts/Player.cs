@@ -3,7 +3,7 @@ using System.Collections;
 using Prime31;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
 	// movement config
 	public float gravity = -25f;
